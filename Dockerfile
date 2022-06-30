@@ -1,15 +1,10 @@
-from alpine:latest
-RUN apk add --no-cache py3-pip \
-    && pip install --upgrade pip \
-    && apk --no-cache add curl \
-    && apk --no-cache add vim
+# FROM nginx:1.17
+FROM nginxinc/nginx-unprivileged
+#COPY ./nginx-os4.conf /etc/nginx/nginx.conf
+add index.html /usr/share/nginx/html
 
-WORKDIR /app
-COPY . /app
+# WORKDIR /code
 
-RUN pip --no-cache-dir install -r requirements.txt
-
-EXPOSE 8080
-
-ENTRYPOINT ["python3"]
-# CMD ["app.py"]l dstat
+USER nginx
+EXPOSE 8080:8080
+CMD ["nginx", "-g", "daemon off;"]
