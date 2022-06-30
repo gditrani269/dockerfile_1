@@ -1,8 +1,15 @@
-FROM ubuntu:latest
+from alpine:latest
+RUN apk add --no-cache py3-pip \
+    && pip install --upgrade pip \
+    && apk --no-cache add curl \
+    && apk --no-cache add vim
 
-RUN apt-get -y update; \
-    apt-get -y upgrade; \
-    apt-get -y install apt-utils \
-    vim \
-    htop;
-RUN apt-get -y install dstat
+WORKDIR /app
+COPY . /app
+
+RUN pip --no-cache-dir install -r requirements.txt
+
+EXPOSE 8080
+
+ENTRYPOINT ["python3"]
+CMD ["app.py"]l dstat
