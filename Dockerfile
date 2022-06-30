@@ -7,4 +7,4 @@ add index.html /usr/share/nginx/html
 
 USER nginx
 EXPOSE 8080:8080
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
