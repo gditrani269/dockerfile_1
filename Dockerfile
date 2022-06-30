@@ -6,5 +6,3 @@ RUN apt-get -y update; \
     vim \
     htop;
 RUN apt-get -y install dstat
-
-CMD ["bash"]
