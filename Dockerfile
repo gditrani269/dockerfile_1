@@ -5,11 +5,11 @@ RUN apk add --no-cache py3-pip \
     && apk --no-cache add vim
 
 WORKDIR /app
-COPY . /app
+# COPY . /app
 
 RUN pip --no-cache-dir install -r requirements.txt
 
 EXPOSE 8080
 
 ENTRYPOINT ["python3"]
-CMD ["app.py"]l dstat
+# CMD ["app.py"]l dstat
