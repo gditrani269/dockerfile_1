@@ -1,11 +1,15 @@
-FROM  debian:10.9
- 
-RUN apt-get update && \
-    apt-get install -y nginx \
-    LABEL maintainer=”linuxhint”
-LABEL version=”1.0”
-LABEL description=”A simple image running Nginx on Debain 10”
- 
-EXPOSE 80/tcp
- 
-CMD [“nginx”, “-g”, ‘daemon off;’]
+from alpine:latest
+RUN apk add --no-cache py3-pip \
+    && pip install --upgrade pip \
+    && apk --no-cache add curl \
+    && apk --no-cache add vim
+
+WORKDIR /app
+COPY . /app
+
+RUN pip --no-cache-dir install -r requirements.txt
+
+EXPOSE 8080
+
+ENTRYPOINT ["python3"]
+CMD ["app.py"]
