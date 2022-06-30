@@ -6,5 +6,5 @@ FROM nginxinc/nginx-unprivileged
 # WORKDIR /code
 
 USER nginx
-EXPOSE 8080:8080
+# EXPOSE 8080:8080
 # CMD ["nginx", "-g", "daemon off;"]
