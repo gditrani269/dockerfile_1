@@ -8,3 +8,4 @@ FROM ubuntu:latest
 # USER nginx
 # EXPOSE 8080:8080
 # CMD ["nginx", "-g", "daemon off;"]
+CMD ["bash"]
